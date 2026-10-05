@@ -47,6 +47,8 @@
     }
   },
   "dependencies": {
+    "@medusajs/js-sdk": "^2.21.2",
+    "@medusajs/types": "^2.21.2",
     "react-router-dom": "^7.18.4"
   }
 }

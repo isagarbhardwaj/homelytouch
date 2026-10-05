@@ -32,8 +32,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         className="w-full h-64 sm:h-72 flex items-center justify-center overflow-hidden mb-4 cursor-pointer"
       >
         <img
-          src={product.image}
-          alt={product.name}
+          src={product.thumbnail}
+          alt={product.title}
           loading="lazy"
           className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
         />
@@ -44,7 +44,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         {/* Title & Price */}
         <Link to={productPath} onClick={handleClick} className="flex flex-col space-y-1">
           <span className="text-sm font-medium text-neutral-600 group-hover:text-neutral-900 transition-colors">
-            {product.name}
+            {product.title}
           </span>
           <span className="text-xl font-bold text-neutral-900">
             {product.price}

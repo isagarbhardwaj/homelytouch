@@ -26,7 +26,7 @@ const defaultNavItems: NavItem[] = [
 export const Header: React.FC<HeaderProps> = ({
   brandName = 'HomelyTouch',
   navItems = defaultNavItems,
-  cartCount = 3,
+  cartCount = 0,
   onSearchClick,
   onCartClick,
   onUserClick,
