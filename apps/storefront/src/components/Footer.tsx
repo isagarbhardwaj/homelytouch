@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import logo from '../assets/logo.svg'
 
 export interface FooterProps {
   brandName?: string
@@ -11,8 +12,8 @@ export interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({
   brandName = 'HomelyTouch',
   copyrightText = 'Copyright 2024. HomelyTouch All Rights Reserved.',
-  addressLine1 = '12 B Street,Estern',
-  addressLine2 = 'Alberta',
+  addressLine1 = 'K-109, Shankar Vihar',
+  addressLine2 = 'Lal kuan, Ghaziabad, UP-201001',
   contactEmail = 'Global@HomelyTouch.com',
 }) => {
   const [email, setEmail] = useState('')
@@ -28,99 +29,23 @@ export const Footer: React.FC<FooterProps> = ({
   }
 
   return (
-    <footer className="w-full bg-[#191919] text-neutral-300 font-sans px-6 md:px-12 lg:px-16 pt-12 pb-8">
+    <footer className="w-full bg-white text-neutral-700 font-sans px-6 md:px-12 lg:px-16 pt-12 pb-8 border-t border-black/10">
       <div className="max-w-7xl mx-auto">
         {/* Top Grid Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
           
-          {/* Column 1: Service */}
-          <div className="flex flex-col space-y-3">
-            <h3 className="text-white text-lg font-medium tracking-wide">
-              Service
-            </h3>
-            <ul className="space-y-2 text-sm text-neutral-400">
-              <li>
-                <a
-                  href="#legal-notice"
-                  className="hover:text-white transition-colors duration-200"
-                >
-                  Legal Notice
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#data-protection"
-                  className="hover:text-white transition-colors duration-200"
-                >
-                  Data Protection
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 2: Newsletter */}
-          <div className="flex flex-col space-y-3">
-            <h3 className="text-white text-lg font-medium tracking-wide">
-              Newsletter
-            </h3>
-            <form onSubmit={handleSubscribe} className="flex flex-col space-y-2 text-sm text-neutral-400">
-              {subscribed ? (
-                <span className="text-emerald-400 text-sm py-1">
-                  Thank you for subscribing!
-                </span>
-              ) : (
-                <>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter Email Address"
-                    className="bg-transparent border-b border-neutral-700 text-neutral-200 placeholder-neutral-500 focus:outline-none focus:border-white py-1 transition-colors text-sm"
-                    aria-label="Enter Email Address"
-                  />
-                  <button
-                    type="submit"
-                    className="text-left text-neutral-400 hover:text-white transition-colors duration-200 cursor-pointer pt-1"
-                  >
-                    Sign Up
-                  </button>
-                </>
-              )}
-            </form>
-          </div>
-
-          {/* Column 3: Brand Logo (Center Column) */}
-          <div className="flex flex-col sm:col-span-2 md:col-span-1 items-center justify-center my-4 lg:my-0">
-            <a href="/" className="flex items-center space-x-3 group">
-              {/* Star / Sparkle inside Circle Icon */}
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                <svg
-                  className="w-6 h-6 text-[#191919]"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" />
-                </svg>
-              </div>
-              <span className="text-white text-2xl font-semibold tracking-tight">
-                {brandName}
-              </span>
-            </a>
-          </div>
-
-          {/* Column 4: Connect */}
-          <div className="flex flex-col space-y-3">
-            <h3 className="text-white text-lg font-medium tracking-wide">
+          {/* Column 1: Connect */}
+          <div className="flex flex-col space-y-3 text-center lg:text-left md:text-left">
+            <h3 className="text-neutral-900 text-lg font-medium tracking-wide">
               Connect
             </h3>
-            <ul className="space-y-2 text-sm text-neutral-400">
+            <ul className="space-y-2 text-sm text-neutral-600">
               <li>
                 <a
-                  href="https://instagram.com"
+                  href="https://instagram.com/homelytouch.store"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition-colors duration-200"
+                  className="hover:text-neutral-900 transition-colors duration-200"
                 >
                   Instagram
                 </a>
@@ -130,7 +55,7 @@ export const Footer: React.FC<FooterProps> = ({
                   href="https://facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition-colors duration-200"
+                  className="hover:text-neutral-900 transition-colors duration-200"
                 >
                   Facebook
                 </a>
@@ -138,18 +63,27 @@ export const Footer: React.FC<FooterProps> = ({
             </ul>
           </div>
 
-          {/* Column 5: Contact */}
-          <div className="flex flex-col space-y-3">
-            <h3 className="text-white text-lg font-medium tracking-wide">
+          {/* Column 2: Brand Logo (Center Column) */}
+          <div className="flex flex-col sm:col-span-2 md:col-span-1 items-center justify-center my-4 lg:my-0">
+            <a href="/" className="flex items-center space-x-3 group">
+              <span className="text-2xl font-semibold tracking-tight">
+                <img src={logo} alt={brandName} className="w-[120px] h-auto object-contain" />
+              </span>
+            </a>
+          </div>
+
+          {/* Column 3: Contact */}
+          <div className="flex flex-col space-y-3 text-center lg:text-right md:text-right">
+            <h3 className="text-neutral-900 text-lg font-medium tracking-wide">
               Contact
             </h3>
-            <div className="space-y-1 text-sm text-neutral-400">
+            <div className="space-y-1 text-sm text-neutral-600">
               <p>{addressLine1}</p>
               <p>{addressLine2}</p>
               <p className="pt-1">
                 <a
                   href={`mailto:${contactEmail}`}
-                  className="underline underline-offset-4 text-neutral-400 hover:text-white hover:decoration-white transition-colors duration-200"
+                  className="underline underline-offset-4 text-neutral-600 hover:text-neutral-900 hover:decoration-neutral-900 transition-colors duration-200"
                 >
                   {contactEmail}
                 </a>
@@ -160,21 +94,21 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         {/* Horizontal Divider */}
-        <div className="w-full border-t border-neutral-800/80 my-8" />
+        <div className="w-full border-t border-neutral-200 my-8" />
 
         {/* Bottom Bar Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-sm text-neutral-400 space-y-4 md:space-y-0">
+        <div className="flex flex-col md:flex-row justify-between items-center text-sm text-neutral-500 space-y-4 md:space-y-0">
           <p>© {copyrightText}</p>
           <div className="flex items-center space-x-6">
             <a
               href="#terms"
-              className="hover:text-white transition-colors duration-200"
+              className="hover:text-neutral-900 transition-colors duration-200"
             >
               Terms of service
             </a>
             <a
               href="#privacy"
-              className="hover:text-white transition-colors duration-200"
+              className="hover:text-neutral-900 transition-colors duration-200"
             >
               Privacy Policy
             </a>

@@ -3,8 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import type { ProductItem } from '../data/mockProducts'
 
 export interface ProductCardProps {
-  product: ProductItem
-  onProductClick?: (product: ProductItem) => void
+  product: ProductItem | any
+  onProductClick?: (product: any) => void
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
@@ -13,6 +13,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   const navigate = useNavigate()
   const productPath = `/product/${product.id}`
+
+  const title = product.title || product.name || ''
+  const image = product.thumbnail || product.image || ''
+  const price =
+    product.price ||
+    (product.variants?.[0]?.calculated_price?.calculated_amount
+      ? `$${product.variants[0].calculated_price.calculated_amount}`
+      : '$0.00')
 
   const handleClick = (e: React.MouseEvent) => {
     if (onProductClick) {
@@ -32,8 +40,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         className="w-full h-64 sm:h-72 flex items-center justify-center overflow-hidden mb-4 cursor-pointer"
       >
         <img
-          src={product.thumbnail}
-          alt={product.title}
+          src={image}
+          alt={title}
           loading="lazy"
           className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
         />
@@ -44,10 +52,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         {/* Title & Price */}
         <Link to={productPath} onClick={handleClick} className="flex flex-col space-y-1">
           <span className="text-sm font-medium text-neutral-600 group-hover:text-neutral-900 transition-colors">
-            {product.title}
+            {title}
           </span>
           <span className="text-xl font-bold text-neutral-900">
-            {product.price}
+            {price}
           </span>
         </Link>
 
@@ -55,7 +63,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <button
           type="button"
           onClick={handleClick}
-          aria-label={`View ${product.name} details`}
+          aria-label={`View ${title} details`}
           className="w-12 h-12 rounded-full bg-[#191919] hover:bg-neutral-800 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-md group-hover:bg-neutral-900 cursor-pointer shrink-0"
         >
           <svg
